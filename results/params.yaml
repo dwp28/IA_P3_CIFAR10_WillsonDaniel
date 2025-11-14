@@ -77,4 +77,3 @@ mlp_baseline:
     test_accuracy: 0.3154
   
   fecha_experimento: "14/11/2025"
->>>>>>> 3178fa1 (feat: baseline mlp - primera red densa para comparación)
