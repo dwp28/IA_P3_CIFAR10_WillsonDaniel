@@ -40,3 +40,41 @@ reduce_lr_on_plateau: false
 
 # Trazabilidad
 fecha_configuracion: "14/11/2025"
+<<<<<<< HEAD
+=======
+
+# ============================================
+# PROMPT 2: CONFIGURACIÓN MLP BASELINE
+# ============================================
+
+mlp_baseline:
+  arquitectura: "MLP"
+  capas:
+    - tipo: "Flatten"
+    - tipo: "Dense"
+      units: 256
+      activation: "relu"
+    - tipo: "Dropout"
+      rate: 0.5
+    - tipo: "Dense"
+      units: 10
+      activation: "softmax"
+  
+  parametros_totales: 789,258
+  
+  entrenamiento:
+    optimizer: "adam"
+    learning_rate: 0.001
+    batch_size: 64
+    epochs: 10
+    loss: "categorical_crossentropy"
+    metrics: ["accuracy"]
+  
+  resultados:
+    val_loss: 1.8994
+    val_accuracy: 0.3251
+    test_loss: 1.8994
+    test_accuracy: 0.3154
+  
+  fecha_experimento: "14/11/2025"
+>>>>>>> 3178fa1 (feat: baseline mlp - primera red densa para comparación)

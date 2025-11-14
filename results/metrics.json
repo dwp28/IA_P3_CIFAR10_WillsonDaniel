@@ -1,0 +1,20 @@
+{
+    "experimentos": [
+        {
+            "nombre": "MLP_Baseline",
+            "fecha": "2025-11-14 16:03:27",
+            "commit": "manual",
+            "modelo": "MLP",
+            "parametros": 789258,
+            "tiempo_entrenamiento_segundos": 92.32,
+            "tiempo_por_epoca": 9.23,
+            "epochs_completadas": 10,
+            "metricas": {
+                "val_loss": 1.8994,
+                "val_accuracy": 0.3251,
+                "test_loss": 1.8994,
+                "test_accuracy": 0.3154
+            }
+        }
+    ]
+}
