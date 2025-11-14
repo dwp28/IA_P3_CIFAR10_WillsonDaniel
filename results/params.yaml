@@ -39,4 +39,4 @@ early_stopping: false
 reduce_lr_on_plateau: false
 
 # Trazabilidad
-fecha_configuracion: "[PON LA FECHA DE HOY]"
+fecha_configuracion: "14/11/2025"
