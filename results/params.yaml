@@ -207,3 +207,106 @@ cnn_l2_early_stopping:
     mejora_test_accuracy: "-0.0050"
   
   fecha_experimento: "14/11/2025"
+
+# ============================================
+# PROMPT 5: DATA AUGMENTATION + REDUCE LR
+# ============================================
+
+cnn_augmentation_reduceLR:
+  arquitectura: "CNN"
+  bloques_conv: 2
+  
+  data_augmentation:
+    enabled: true
+    transformaciones:
+      - tipo: "RandomFlip"
+        modo: "horizontal"
+        probabilidad: 0.5
+      - tipo: "RandomRotation"
+        factor: 0.1  # ±10% = ±36°
+      - tipo: "RandomZoom"
+        factor: 0.1  # ±10%
+      - tipo: "RandomTranslation"
+        height_factor: 0.1
+        width_factor: 0.1
+    
+    nota: "Augmentation se aplica solo durante entrenamiento"
+  
+  regularizacion:
+    tipo: "L2"
+    lambda: 0.0001
+    dropout: 0.5
+  
+  capas:
+    - seccion: "Augmentation"
+      capas: ["RandomFlip", "RandomRotation", "RandomZoom", "RandomTranslation"]
+    
+    - bloque: 1
+      tipo: "Conv2D"
+      filtros: 32
+      kernel_size: [3, 3]
+      activation: "relu"
+      padding: "same"
+      regularizer: "l2(1e-4)"
+    - tipo: "MaxPooling2D"
+      pool_size: [2, 2]
+    
+    - bloque: 2
+      tipo: "Conv2D"
+      filtros: 64
+      kernel_size: [3, 3]
+      activation: "relu"
+      padding: "same"
+      regularizer: "l2(1e-4)"
+    - tipo: "MaxPooling2D"
+      pool_size: [2, 2]
+    
+    - tipo: "Flatten"
+    - tipo: "Dense"
+      units: 128
+      activation: "relu"
+      regularizer: "l2(1e-4)"
+    - tipo: "Dropout"
+      rate: 0.5
+    - tipo: "Dense"
+      units: 10
+      activation: "softmax"
+  
+  parametros_totales: 545,098
+  
+  entrenamiento:
+    optimizer: "adam"
+    learning_rate_inicial: 0.001
+    batch_size: 64
+    epochs_max: 20
+    epochs_completadas: 13/20
+    loss: "categorical_crossentropy"
+  
+  callbacks:
+    reduce_lr_on_plateau:
+      enabled: true
+      monitor: "val_loss"
+      factor: 0.2
+      patience: 3
+      min_lr: 1e-7
+      
+    early_stopping:
+      enabled: true
+      monitor: "val_loss"
+      patience: 5
+      restore_best_weights: true
+      mejor_epoca: 8
+      val_loss_minima: 1.2088
+  
+  resultados:
+    val_loss: 1.2088
+    val_accuracy: 0.5949
+    test_loss: 1.2074
+    test_accuracy: 0.5927
+  
+  mejoras_acumuladas:
+    vs_mlp_baseline: "02773"
+    vs_cnn_simple: "-0.1030"
+    vs_cnn_l2: "0.098"
+  
+  fecha_experimento: "14/11/2025"

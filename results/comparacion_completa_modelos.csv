@@ -1,0 +1,5 @@
+Modelo,Parámetros,Épocas,Val Accuracy,Test Accuracy,Técnicas
+MLP Baseline,789258,10,0.3251 (32.51%),0.3154 (31.54%),Ninguna
+CNN Simple,545098,15,0.6997 (69.97%),0.6957 (69.57%),Conv + Pool
+CNN L2,545098,14,0.6890 (68.90%),0.6907 (69.07%),L2 + Early Stop
+CNN Aug + ReduceLR,545098,13,0.5949 (59.49%),0.5927 (59.27%),Aug + L2 + ReduceLR

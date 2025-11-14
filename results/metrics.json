@@ -61,6 +61,53 @@
                 "brecha_train_val_reducida": 0.0424,
                 "mejora_test_accuracy": -0.005
             }
+        },
+        {
+            "nombre": "CNN_Augmentation_ReduceLR",
+            "fecha": "2025-11-14 18:30:10",
+            "commit": "manual",
+            "modelo": "CNN_Augmented",
+            "parametros": 545098,
+            "data_augmentation": {
+                "enabled": true,
+                "transformaciones": [
+                    "RandomFlip(horizontal)",
+                    "RandomRotation(0.1)",
+                    "RandomZoom(0.1)",
+                    "RandomTranslation(0.1, 0.1)"
+                ]
+            },
+            "regularizacion": {
+                "tipo": "L2",
+                "lambda": 0.0001,
+                "dropout": 0.5
+            },
+            "callbacks": {
+                "reduce_lr_on_plateau": {
+                    "factor": 0.2,
+                    "patience": 3
+                },
+                "early_stopping": {
+                    "patience": 5,
+                    "mejor_epoca": 8,
+                    "val_loss_minima": 1.2088
+                }
+            },
+            "tiempo_entrenamiento_segundos": 1594.22,
+            "tiempo_por_epoca": 122.63,
+            "epochs_completadas": 13,
+            "epochs_max": 20,
+            "metricas": {
+                "val_loss": 1.2088,
+                "val_accuracy": 0.5949,
+                "test_loss": 1.2074,
+                "test_accuracy": 0.5927
+            },
+            "mejoras": {
+                "vs_mlp": 0.2773,
+                "vs_cnn_simple": -0.103,
+                "vs_cnn_l2": -0.098
+            }
         }
     ]
 }
