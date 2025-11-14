@@ -15,6 +15,22 @@
                 "test_loss": 1.8994,
                 "test_accuracy": 0.3154
             }
+        },
+        {
+            "nombre": "CNN_Simple_2Blocks",
+            "fecha": "2025-11-14 17:01:25",
+            "commit": "manual",
+            "modelo": "CNN",
+            "parametros": 545098,
+            "tiempo_entrenamiento_segundos": 1100.37,
+            "tiempo_por_epoca": 73.36,
+            "epochs_completadas": 15,
+            "metricas": {
+                "val_loss": 0.9286,
+                "val_accuracy": 0.6997,
+                "test_loss": 0.9295,
+                "test_accuracy": 0.6957
+            }
         }
     ]
 }

@@ -77,3 +77,57 @@ mlp_baseline:
     test_accuracy: 0.3154
   
   fecha_experimento: "14/11/2025"
+
+
+# ============================================
+# PROMPT 3: CONFIGURACIÓN CNN SIMPLE
+# ============================================
+
+cnn_simple_2blocks:
+  arquitectura: "CNN"
+  bloques_conv: 2
+  capas:
+    - bloque: 1
+      tipo: "Conv2D"
+      filtros: 32
+      kernel_size: [3, 3]
+      activation: "relu"
+      padding: "same"
+    - tipo: "MaxPooling2D"
+      pool_size: [2, 2]
+    
+    - bloque: 2
+      tipo: "Conv2D"
+      filtros: 64
+      kernel_size: [3, 3]
+      activation: "relu"
+      padding: "same"
+    - tipo: "MaxPooling2D"
+      pool_size: [2, 2]
+    
+    - tipo: "Flatten"
+    - tipo: "Dense"
+      units: 128
+      activation: "relu"
+    - tipo: "Dropout"
+      rate: 0.5
+    - tipo: "Dense"
+      units: 10
+      activation: "softmax"
+  
+  parametros_totales: 545,098
+  
+  entrenamiento:
+    optimizer: "adam"
+    learning_rate: 0.001
+    batch_size: 64
+    epochs: 15
+    loss: "categorical_crossentropy"
+  
+  resultados:
+    val_loss: 0.9286
+    val_accuracy: 0.6997
+    test_loss: 0.9295
+    test_accuracy: 0.6957
+  
+  fecha_experimento: "14/11/2025"
