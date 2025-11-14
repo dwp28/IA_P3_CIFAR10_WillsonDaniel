@@ -1,0 +1,41 @@
+{
+    "dataset": "CIFAR-10",
+    "fecha_creacion": "2025-11-14 15:26:44",
+    "formas_datos": {
+        "x_train": [
+            40000,
+            32,
+            32,
+            3
+        ],
+        "x_valid": [
+            10000,
+            32,
+            32,
+            3
+        ],
+        "x_test": [
+            10000,
+            32,
+            32,
+            3
+        ],
+        "y_train": [
+            40000,
+            10
+        ],
+        "y_valid": [
+            10000,
+            10
+        ],
+        "y_test": [
+            10000,
+            10
+        ]
+    },
+    "hash_sha256_train_1024": "382904eadd089d5da172d2bb9b34fd44965b4a079f0f0be722e706328df5118c",
+    "normalizacion": "dividido por 255.0, rango [0, 1]",
+    "formato_etiquetas": "one-hot encoding (10 clases)",
+    "seed": 42,
+    "split": "80% train, 20% valid (estratificado)"
+}
