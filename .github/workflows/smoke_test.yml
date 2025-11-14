@@ -1,0 +1,32 @@
+name: Smoke Test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          pip install tensorflow numpy matplotlib scikit-learn
+      - name: Run smoke test
+        run: |
+          python -c "
+          import tensorflow as tf
+          import numpy as np
+          print('✓ Librerías importadas correctamente')
+          
+          # Construir modelo mínimo
+          model = tf.keras.Sequential([
+              tf.keras.layers.Conv2D(32, (3,3), input_shape=(32,32,3)),
+              tf.keras.layers.Flatten(),
+              tf.keras.layers.Dense(10, activation='softmax')
+          ])
+          print('✓ Modelo mínimo construido')
+          print('Smoke test PASADO')
+          "
