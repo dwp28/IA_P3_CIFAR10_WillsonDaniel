@@ -31,6 +31,36 @@
                 "test_loss": 0.9295,
                 "test_accuracy": 0.6957
             }
+        },
+        {
+            "nombre": "CNN_L2_EarlyStopping",
+            "fecha": "2025-11-14 17:42:28",
+            "commit": "manual",
+            "modelo": "CNN_Regularized",
+            "parametros": 545098,
+            "regularizacion": {
+                "tipo": "L2",
+                "lambda": 0.0001,
+                "early_stopping": {
+                    "patience": 5,
+                    "mejor_epoca": 9,
+                    "val_loss_minima": 0.9853
+                }
+            },
+            "tiempo_entrenamiento_segundos": 914.16,
+            "tiempo_por_epoca": 65.3,
+            "epochs_completadas": 14,
+            "epochs_max": 30,
+            "metricas": {
+                "val_loss": 0.9853,
+                "val_accuracy": 0.689,
+                "test_loss": 0.9912,
+                "test_accuracy": 0.6907
+            },
+            "comparacion_vs_cnn_simple": {
+                "brecha_train_val_reducida": 0.0424,
+                "mejora_test_accuracy": -0.005
+            }
         }
     ]
 }

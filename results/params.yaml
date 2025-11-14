@@ -131,3 +131,79 @@ cnn_simple_2blocks:
     test_accuracy: 0.6957
   
   fecha_experimento: "14/11/2025"
+
+# ============================================
+# PROMPT 4: CNN CON L2 + EARLY STOPPING
+# ============================================
+
+cnn_l2_early_stopping:
+  arquitectura: "CNN"
+  bloques_conv: 2
+  
+  regularizacion:
+    tipo: "L2"
+    lambda: 0.0001  # 1e-4
+    capas_con_l2: ["Conv2D(32)", "Conv2D(64)", "Dense(128)"]
+  
+  capas:
+    - bloque: 1
+      tipo: "Conv2D"
+      filtros: 32
+      kernel_size: [3, 3]
+      activation: "relu"
+      padding: "same"
+      regularizer: "l2(1e-4)"
+    - tipo: "MaxPooling2D"
+      pool_size: [2, 2]
+    
+    - bloque: 2
+      tipo: "Conv2D"
+      filtros: 64
+      kernel_size: [3, 3]
+      activation: "relu"
+      padding: "same"
+      regularizer: "l2(1e-4)"
+    - tipo: "MaxPooling2D"
+      pool_size: [2, 2]
+    
+    - tipo: "Flatten"
+    - tipo: "Dense"
+      units: 128
+      activation: "relu"
+      regularizer: "l2(1e-4)"
+    - tipo: "Dropout"
+      rate: 0.5
+    - tipo: "Dense"
+      units: 10
+      activation: "softmax"
+  
+  parametros_totales: 545,098
+  
+  entrenamiento:
+    optimizer: "adam"
+    learning_rate: 0.001
+    batch_size: 64
+    epochs_max: 30
+    epochs_completadas: 14/30
+    loss: "categorical_crossentropy"
+    
+  callbacks:
+    early_stopping:
+      enabled: true
+      monitor: "val_loss"
+      patience: 5
+      restore_best_weights: true
+      mejor_epoca: 9
+      val_loss_minima: 0.9853
+  
+  resultados:
+    val_loss: 0.9853
+    val_accuracy: 0.6890
+    test_loss: 0.9912
+    test_accuracy: 0.6907
+    
+  mejoras_vs_cnn_simple:
+    reduccion_brecha_train_val: "0.0424"
+    mejora_test_accuracy: "-0.0050"
+  
+  fecha_experimento: "14/11/2025"
