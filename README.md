@@ -59,7 +59,7 @@ CNN Deep (3B)       →  78% accuracy  (rendimientos decrecientes)
 
 ## 🏆 Release Oficial
 
-### 📦 [v1.0-P3-CIFAR10](https://github.com/[TU_USUARIO]/IA_P3_CIFAR10/releases/tag/v1.0)
+### 📦 [v1.0-P3-CIFAR10](https://github.com/dwp28/IA_P3_CIFAR10_WillsonDaniel/releases/tag/v1.0)
 
 **Contenido del release:**
 - 📓 Notebook completo ejecutable (`.ipynb` + `.pdf`)
@@ -77,7 +77,7 @@ CNN Deep (3B)       →  78% accuracy  (rendimientos decrecientes)
 IA_P3_CIFAR10/
 │
 ├── 📓 notebooks/
-│   └── CIFAR10_CNN_[Apellido].ipynb    # Notebook principal con todos los prompts
+│   └── CIFAR10_CNN_Willson.ipynb    # Notebook principal con todos los prompts
 │
 ├── 📊 results/
 │   ├── params.yaml                      # Configuraciones de todos los experimentos
@@ -107,8 +107,8 @@ IA_P3_CIFAR10/
 │
 ├── 💾 outputs/
 │   ├── entrega.zip                      # Paquete completo para entrega
-│   ├── CIFAR10_CNN_[Apellido].ipynb     # Notebook descargado
-│   ├── CIFAR10_CNN_[Apellido].pdf       # PDF del notebook
+│   ├── CIFAR10_CNN_Willson.ipynb     # Notebook descargado
+│   ├── CIFAR10_CNN_Willson.pdf       # PDF del notebook
 │   └── best_model_weights.h5            # Pesos del mejor modelo
 │
 ├── 🔧 env/
@@ -134,8 +134,8 @@ IA_P3_CIFAR10/
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/[TU_USUARIO]/IA_P3_CIFAR10_[ApellidoNombre].git
-cd IA_P3_CIFAR10_[ApellidoNombre]
+git clone https://github.com/dwp28/IA_P3_CIFAR10_WillsonDaniel.git
+cd IA_P3_CIFAR10_WillsonDaniel
 
 # 2. Checkout del release estable
 git checkout v1.0-P3-CIFAR10
@@ -144,7 +144,7 @@ git checkout v1.0-P3-CIFAR10
 pip install -r env/requirements.txt
 
 # 4. Abrir notebook en Colab o Jupyter
-jupyter notebook notebooks/CIFAR10_CNN_[Apellido].ipynb
+jupyter notebook notebooks/CIFAR10_CNN_WillsonDaniel.ipynb
 ```
 
 ### Ejecución en Google Colab
@@ -152,7 +152,7 @@ jupyter notebook notebooks/CIFAR10_CNN_[Apellido].ipynb
 1. Ve a [Google Colab](https://colab.research.google.com/)
 2. Archivo → Abrir cuaderno → GitHub
 3. Pega la URL de este repositorio
-4. Selecciona el notebook `CIFAR10_CNN_[Apellido].ipynb`
+4. Selecciona el notebook `CIFAR10_CNN_WillsonDaniel.ipynb`
 5. Runtime → Run all
 
 ---
