@@ -1,0 +1,16 @@
+
+RESUMEN EJECUTIVO: ANÁLISIS DE ERRORES
+==========================================================================================
+
+MEJOR MODELO: CNN Simple (2B)
+Test Accuracy: 69.62%
+Errores: 3038/10000 (30.38%)
+
+TOP 5 CONFUSIONES:
+1. perro → gato: 237 errores (23.70%)
+2. gato → perro: 139 errores (13.90%)
+3. camión → auto: 119 errores (11.90%)
+4. barco → avión: 114 errores (11.40%)
+5. rana → gato: 105 errores (10.50%)
+
+Fecha de análisis: 2025-11-16 17:41:32

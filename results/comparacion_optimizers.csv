@@ -1,0 +1,10 @@
+Métrica,Adam + ReduceLR,SGD + Cosine
+Optimizador,Adam,SGD (momentum=0.9)
+LR Schedule,ReduceLROnPlateau,CosineDecay
+Épocas completadas,15,14
+Tiempo total (s),56.51,47.39
+Tiempo/época (s),3.77,3.39
+Val Accuracy,69.43%,61.08%
+Test Accuracy,69.62%,60.50%
+Val Loss final,0.9121,1.2374
+Estabilidad (std val_loss últimas 5 épocas),0.0148,0.0094

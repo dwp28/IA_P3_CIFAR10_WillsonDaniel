@@ -1,0 +1,5 @@
+Variante,Augmentation,L2,Dropout,Épocas,Val Acc (%),Test Acc (%),Val Loss
+A_Control,True,True,True,20,60.99,61.42,1.1969
+B_NoAugment,False,True,True,15,70.70,70.84,0.9632
+C_NoL2,True,False,True,15,61.39,61.64,1.0891
+D_NoDropout,True,True,False,20,65.60,65.39,1.1066

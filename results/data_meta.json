@@ -1,6 +1,6 @@
 {
     "dataset": "CIFAR-10",
-    "fecha_creacion": "2025-11-14 15:26:44",
+    "fecha_creacion": "2025-11-16 17:33:28",
     "formas_datos": {
         "x_train": [
             40000,

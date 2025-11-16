@@ -1,0 +1,272 @@
+{
+    "experimentos": [
+        {
+            "nombre": "MLP_Baseline",
+            "fecha": "2025-11-16 17:33:58",
+            "commit": "manual",
+            "modelo": "MLP",
+            "parametros": 789258,
+            "tiempo_entrenamiento_segundos": 24.93,
+            "tiempo_por_epoca": 2.49,
+            "epochs_completadas": 10,
+            "metricas": {
+                "val_loss": 1.8907,
+                "val_accuracy": 0.3228,
+                "test_loss": 1.8881,
+                "test_accuracy": 0.3145
+            }
+        },
+        {
+            "nombre": "CNN_Simple_2Blocks",
+            "fecha": "2025-11-16 17:34:58",
+            "commit": "manual",
+            "modelo": "CNN",
+            "parametros": 545098,
+            "tiempo_entrenamiento_segundos": 56.51,
+            "tiempo_por_epoca": 3.77,
+            "epochs_completadas": 15,
+            "metricas": {
+                "val_loss": 0.9121,
+                "val_accuracy": 0.6943,
+                "test_loss": 0.9055,
+                "test_accuracy": 0.6962
+            }
+        },
+        {
+            "nombre": "CNN_L2_EarlyStopping",
+            "fecha": "2025-11-16 17:35:58",
+            "commit": "manual",
+            "modelo": "CNN_Regularized",
+            "parametros": 545098,
+            "regularizacion": {
+                "tipo": "L2",
+                "lambda": 0.0001,
+                "early_stopping": {
+                    "patience": 5,
+                    "mejor_epoca": 11,
+                    "val_loss_minima": 0.9844
+                }
+            },
+            "tiempo_entrenamiento_segundos": 56.61,
+            "tiempo_por_epoca": 3.54,
+            "epochs_completadas": 16,
+            "epochs_max": 30,
+            "metricas": {
+                "val_loss": 0.9844,
+                "val_accuracy": 0.6894,
+                "test_loss": 0.9788,
+                "test_accuracy": 0.6933
+            },
+            "comparacion_vs_cnn_simple": {
+                "brecha_train_val_reducida": 0.0063,
+                "mejora_test_accuracy": -0.0029
+            }
+        },
+        {
+            "nombre": "CNN_Augmentation_ReduceLR",
+            "fecha": "2025-11-16 17:38:00",
+            "commit": "manual",
+            "modelo": "CNN_Augmented",
+            "parametros": 545098,
+            "data_augmentation": {
+                "enabled": true,
+                "transformaciones": [
+                    "RandomFlip(horizontal)",
+                    "RandomRotation(0.1)",
+                    "RandomZoom(0.1)",
+                    "RandomTranslation(0.1, 0.1)"
+                ]
+            },
+            "regularizacion": {
+                "tipo": "L2",
+                "lambda": 0.0001,
+                "dropout": 0.5
+            },
+            "callbacks": {
+                "reduce_lr_on_plateau": {
+                    "factor": 0.2,
+                    "patience": 3
+                },
+                "early_stopping": {
+                    "patience": 5,
+                    "mejor_epoca": 20,
+                    "val_loss_minima": 1.1789
+                }
+            },
+            "tiempo_entrenamiento_segundos": 117.41,
+            "tiempo_por_epoca": 5.87,
+            "epochs_completadas": 20,
+            "epochs_max": 20,
+            "metricas": {
+                "val_loss": 1.1789,
+                "val_accuracy": 0.605,
+                "test_loss": 1.1686,
+                "test_accuracy": 0.6134
+            },
+            "mejoras": {
+                "vs_mlp": 0.2989,
+                "vs_cnn_simple": -0.0828,
+                "vs_cnn_l2": -0.0799
+            }
+        },
+        {
+            "nombre": "CNN_Deep_3Blocks",
+            "fecha": "2025-11-16 17:41:26",
+            "commit": "manual",
+            "modelo": "CNN_Deep",
+            "bloques_conv": 3,
+            "filtros": [
+                32,
+                64,
+                128
+            ],
+            "parametros": 356810,
+            "data_augmentation": {
+                "enabled": true,
+                "transformaciones": [
+                    "RandomFlip(horizontal)",
+                    "RandomRotation(0.1)",
+                    "RandomZoom(0.1)",
+                    "RandomTranslation(0.1, 0.1)"
+                ]
+            },
+            "regularizacion": {
+                "tipo": "L2",
+                "lambda": 0.0001,
+                "dropout": 0.5
+            },
+            "callbacks": {
+                "reduce_lr_on_plateau": {
+                    "factor": 0.2,
+                    "patience": 3
+                },
+                "early_stopping": {
+                    "patience": 5,
+                    "mejor_epoca": 29,
+                    "val_loss_minima": 0.9753
+                }
+            },
+            "tiempo_entrenamiento_segundos": 201.46,
+            "tiempo_por_epoca": 6.72,
+            "epochs_completadas": 30,
+            "epochs_max": 30,
+            "metricas": {
+                "val_loss": 0.9753,
+                "val_accuracy": 0.69,
+                "test_loss": 0.9745,
+                "test_accuracy": 0.6864
+            },
+            "analisis_coste_beneficio": {
+                "vs_cnn_2bloques": {
+                    "incremento_parametros": -188288,
+                    "incremento_parametros_porcentaje": -34.54,
+                    "incremento_tiempo_porcentaje": 14.39,
+                    "mejora_test_accuracy_puntos": 7.3,
+                    "compensa": "S\u00cd"
+                }
+            }
+        },
+        {
+            "nombre": "SGD_CosineDecay",
+            "optimizer": "SGD",
+            "momentum": 0.9,
+            "lr_schedule": "CosineDecay",
+            "epochs_completadas": 14,
+            "metricas": {
+                "val_accuracy": 0.6108,
+                "test_accuracy": 0.605
+            },
+            "comparacion_vs_adam": {
+                "diferencia_test": -0.0912,
+                "ganador": "Adam"
+            }
+        }
+    ],
+    "mejor_modelo": {
+        "nombre": "CNN Simple (2B)",
+        "modelo_key": "cnn_simple",
+        "fecha_seleccion": "2025-11-16 17:41:32",
+        "commit": "manual",
+        "criterio": "Mayor test_accuracy con balance coste/beneficio",
+        "metricas": {
+            "test_accuracy": 0.6962,
+            "test_accuracy_percentage": "69.62%"
+        },
+        "analisis_errores": {
+            "total_test_samples": 10000,
+            "errores_totales": 3038,
+            "tasa_error": 30.38,
+            "tasa_acierto": 69.62
+        },
+        "confusiones_principales": [
+            {
+                "par": "perro \u2192 gato",
+                "errores": 237,
+                "porcentaje": 23.7
+            },
+            {
+                "par": "gato \u2192 perro",
+                "errores": 139,
+                "porcentaje": 13.9
+            },
+            {
+                "par": "cami\u00f3n \u2192 auto",
+                "errores": 119,
+                "porcentaje": 11.9
+            }
+        ],
+        "figuras_analisis": [
+            "2025-11-16_manual_confusion_matrix_cnn_simple.png",
+            "2025-11-16_manual_errores_tipicos_cnn_simple.png",
+            "classification_report.csv"
+        ]
+    },
+    "ablation_study": {
+        "variantes": {
+            "A_Control": {
+                "config": {
+                    "augmentation": true,
+                    "l2": true,
+                    "dropout": true,
+                    "descripcion": "Control (todas las t\u00e9cnicas activas)"
+                },
+                "test_acc": 0.6142,
+                "caida_vs_control": 0
+            },
+            "B_NoAugment": {
+                "config": {
+                    "augmentation": false,
+                    "l2": true,
+                    "dropout": true,
+                    "descripcion": "Sin Data Augmentation"
+                },
+                "test_acc": 0.7084,
+                "caida_vs_control": -9.42
+            },
+            "C_NoL2": {
+                "config": {
+                    "augmentation": true,
+                    "l2": false,
+                    "dropout": true,
+                    "descripcion": "Sin regularizaci\u00f3n L2"
+                },
+                "test_acc": 0.6164,
+                "caida_vs_control": -0.22
+            },
+            "D_NoDropout": {
+                "config": {
+                    "augmentation": true,
+                    "l2": true,
+                    "dropout": false,
+                    "descripcion": "Sin Dropout"
+                },
+                "test_acc": 0.6539,
+                "caida_vs_control": -3.97
+            }
+        },
+        "conclusion": {
+            "tecnica_mas_critica": "L2",
+            "mayor_caida_porcentaje": -0.22
+        }
+    }
+}
